@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *
  */
 
 package finitestatemachines;
@@ -12,7 +10,7 @@ package finitestatemachines;
  */
 public class Student extends BaseGameEntity {
     
-    private State currentState;
+    private StateMachine stateMachine;
     private Location location;
     private int ectsAccumulated;
     private int barLearned;
@@ -26,9 +24,9 @@ public class Student extends BaseGameEntity {
         super(id);
     }
 
-    public Student(State currentState, Location location, int ectsAccumulated, int barLearned, int alreadyLearned, int thirst, int hunger, int fatigue, int id) {
+    public Student(StateMachine stateMachine, Location location, int ectsAccumulated, int barLearned, int alreadyLearned, int thirst, int hunger, int fatigue, int id) {
         super(id);
-        this.currentState = currentState;
+        this.stateMachine = stateMachine;
         this.location = location;
         this.ectsAccumulated = ectsAccumulated;
         this.barLearned = barLearned;
@@ -43,27 +41,7 @@ public class Student extends BaseGameEntity {
     {
         thirst += 2;
         hunger += 1;
-        if(currentState != null)
-        {
-            currentState.Execute(this);
-        }
-    }
-    
-    public void ChangeState(State newState)
-    {
-        if(newState == null)
-        {
-            System.out.println("Greška, proslijeđen je null state.");
-            System.exit(1);
-        }
-        
-        currentState.Exit(this);
-        currentState = newState;
-        currentState.Enter(this);
-    }
-
-    public State getCurrentState() {
-        return currentState;
+        stateMachine.Update();
     }
 
     public Location getLocation() {
@@ -94,10 +72,14 @@ public class Student extends BaseGameEntity {
         return fatigue;
     }
 
-    public void setCurrentState(State currentState) {
-        this.currentState = currentState;
+    public StateMachine getStateMachine() {
+        return stateMachine;
     }
 
+    public void setStateMachine(StateMachine stateMachine) {
+        this.stateMachine = stateMachine;
+    }
+    
     public void setLocation(Location location) {
         this.location = location;
     }
