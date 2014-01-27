@@ -1,7 +1,4 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
  */
 
 package finitestatemachines;
@@ -14,17 +11,25 @@ public class LearningState implements State {
 
     @Override
     public void Enter(Student entity) {
-        System.out.println("Student ide u dnevni boravak da uci!");
+        if(entity.getLocation() != Location.PERSONAL_ROOM)
+        {
+            System.out.println("Student ide u svoju sobu da uci!");
+            entity.setLocation(Location.PERSONAL_ROOM);
+        }
     }
 
     @Override
     public void Execute(Student entity) {
-        System.out.println("");
+        entity.setAlreadyLearned(entity.getAlreadyLearned()+2);
+        entity.setThirst(entity.getThirst()+1);
+        entity.setHunger(entity.getHunger()+1);
+        entity.setFatigue(entity.getFatigue()+1);
+        System.out.println("Moram jos uciti!!!");
     }
 
     @Override
     public void Exit(Student entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Student je prekinuo ucenje i ide na neku iducu akciju.");
     }
     
 }

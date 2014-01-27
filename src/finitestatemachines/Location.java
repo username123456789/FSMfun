@@ -11,5 +11,5 @@ package finitestatemachines;
  * @author User
  */
 public enum Location {
-    DINNING_ROOM, KITCHEN, BEDROOM, LIVINGROOM, PERSONAL_ROOM
+    DINNING_ROOM, KITCHEN, BEDROOM, PERSONAL_ROOM, COLLEGE
 }

@@ -61,4 +61,69 @@ public class Student extends BaseGameEntity {
         currentState = newState;
         currentState.Enter(this);
     }
+
+    public State getCurrentState() {
+        return currentState;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public int getEctsAccumulated() {
+        return ectsAccumulated;
+    }
+
+    public int getBarLearned() {
+        return barLearned;
+    }
+
+    public int getAlreadyLearned() {
+        return alreadyLearned;
+    }
+
+    public int getThirst() {
+        return thirst;
+    }
+
+    public int getHunger() {
+        return hunger;
+    }
+
+    public int getFatigue() {
+        return fatigue;
+    }
+
+    public void setCurrentState(State currentState) {
+        this.currentState = currentState;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public void setEctsAccumulated(int ectsAccumulated) {
+        this.ectsAccumulated = ectsAccumulated;
+    }
+
+    public void setBarLearned(int barLearned) {
+        this.barLearned = barLearned;
+    }
+
+    public void setAlreadyLearned(int alreadyLearned) {
+        this.alreadyLearned = alreadyLearned;
+    }
+
+    public void setThirst(int thirst) {
+        this.thirst = thirst;
+    }
+
+    public void setHunger(int hunger) {
+        this.hunger = hunger;
+    }
+
+    public void setFatigue(int fatigue) {
+        this.fatigue = fatigue;
+    }
+    
 }
