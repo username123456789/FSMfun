@@ -24,11 +24,16 @@ public class TakingTestsState implements State {
         entity.setEctsAccumulated(entity.getEctsAccumulated()+5);
         entity.setFatigue(entity.getFatigue()+1);
         System.out.println("Sabijanje na ispitima neizmjerno!");
+        if(entity.getEctsAccumulated()%Constants.deltaEcts == 0)
+        {
+            entity.getStateMachine().ChangeState(new SleepingState());
+        }
     }
 
     @Override
     public void Exit(Student entity) {
         System.out.println("Ispiti su zavrsili!");
+        System.out.println("\n");
     }
     
 }

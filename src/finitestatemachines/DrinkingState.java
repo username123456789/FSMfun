@@ -23,11 +23,16 @@ public class DrinkingState implements State {
     public void Execute(Student entity) {
         entity.setThirst(0);
         System.out.println("Gulp gulp! Ahhh ova voda je dobro dosla!");
+        if(entity.getThirst() <= 0)
+        {
+            entity.getStateMachine().ChangeState(new LearningState());
+        }
     }
 
     @Override
     public void Exit(Student entity) {
-        System.out.println("Student se napio vode i izlazi iz kuhinje!");
+        System.out.println("Student se napio vode!");
+        System.out.println("\n");
     }
     
 }

@@ -21,13 +21,19 @@ public class SleepingState implements State {
 
     @Override
     public void Execute(Student entity) {
-        entity.setFatigue(0);
+        entity.setFatigue(entity.getFatigue()-4);
         System.out.println("ZZZZZ... ZZZZZ...!");
+        if(entity.getFatigue()<=0)
+        {
+            entity.setFatigue(0);
+            entity.getStateMachine().ChangeState(new LearningState());
+        }
     }
 
     @Override
     public void Exit(Student entity) {
         System.out.println("Student se budi odmoran i spreman za nove pobjede!");
+        System.out.println("\n");
     }
     
 }

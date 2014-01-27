@@ -23,11 +23,16 @@ public class EatingState implements State {
     public void Execute(Student entity) {
         entity.setHunger(0);
         System.out.println("Njam njam njam njam! Pretpah se ovim bijesnim sendvicima!");
+        if(entity.getHunger() <= 0)
+        {
+            entity.getStateMachine().ChangeState(new LearningState());
+        }
     }
 
     @Override
     public void Exit(Student entity) {
         System.out.println("Student je zavrsio s jelom.");
+        System.out.println("\n");
     }
     
 }

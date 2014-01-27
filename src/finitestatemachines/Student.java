@@ -24,9 +24,10 @@ public class Student extends BaseGameEntity {
         super(id);
     }
 
-    public Student(StateMachine stateMachine, Location location, int ectsAccumulated, int barLearned, int alreadyLearned, int thirst, int hunger, int fatigue, int id) {
+    public Student(State currentState, State previousState, State globalState, Location location, int ectsAccumulated, int barLearned, int alreadyLearned, int thirst, int hunger, int fatigue, int id) {
         super(id);
-        this.stateMachine = stateMachine;
+        StateMachine sm = new StateMachine(this, currentState, previousState, globalState);
+        this.stateMachine = sm;
         this.location = location;
         this.ectsAccumulated = ectsAccumulated;
         this.barLearned = barLearned;

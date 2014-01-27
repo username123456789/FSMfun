@@ -25,11 +25,24 @@ public class LearningState implements State {
         entity.setHunger(entity.getHunger()+1);
         entity.setFatigue(entity.getFatigue()+1);
         System.out.println("Moram jos uciti!!!");
+        if(entity.getAlreadyLearned()%Constants.deltaLearned == 0)
+        {
+            entity.getStateMachine().ChangeState(new TakingTestsState());
+        }
+        else if(entity.getThirst() > Constants.maxThirst)
+        {
+            entity.getStateMachine().ChangeState(new DrinkingState());
+        }
+        else if(entity.getHunger() > Constants.maxHunger)
+        {
+            entity.getStateMachine().ChangeState(new EatingState());
+        }
     }
 
     @Override
     public void Exit(Student entity) {
         System.out.println("Student je prekinuo ucenje i ide na neku iducu akciju.");
+        System.out.println("\n");
     }
     
 }
